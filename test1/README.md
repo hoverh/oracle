@@ -16,7 +16,7 @@ where d.department_id = e.department_id
 and d.department_name in ('IT','Sales')
 GROUP BY d.department_name;
 ```
-![节点](./pict1.jpg)
+![image](https://github.com/huang-7605/oracle/blob/master/test1/pict1.jpg?raw=true)
 
 ### sql语句2：
 ```sql
@@ -27,7 +27,7 @@ WHERE d.department_id = e.department_id
 GROUP BY d.department_name
 HAVING d.department_name in ('IT','Sales');
 ```
-![节点](./pict2.jpg)
+![image](https://github.com/huang-7605/oracle/blob/master/test1/pict2.jpg?raw=true)
 ### 分析：
 第二个查询语句和第一个不同，它是在上一条语句的基础上对分组进行了筛选，筛选的条件是where子句后的条件。这样优化的好处是，尽量减少笛卡尔积，因为笛卡尔积会产生大量的数据，产生很大的开销。
 
@@ -48,7 +48,7 @@ and c.region_id=r.region_id
 and  r.region_name='Europe'
 group by department_name ,region_name;
 ```
-![节点](./pict3.jpg)
+![image](https://github.com/huang-7605/oracle/blob/master/test1/pict3.jpg?raw=true)
 
 ### 优化后：
 ```sql
@@ -61,7 +61,7 @@ and c.region_id=r.region_id
 group by department_name ,region_name
 having  r.region_name='Europe';
 ```
-![节点](./pict4.jpg)
+![image](https://github.com/huang-7605/oracle/blob/master/test1/pict4.jpg?raw=true)
 ### 分析：
 第一条sql在查询时在where语句中对行进行筛选时发现了开销很大的笛卡尔积操作，根据优化指导的建议，在该语句中移去断开连接的表或视图，这样做的原理是应尽量避免笛卡尔积操作
 
