@@ -43,7 +43,7 @@ ALTER USER studenghuang QUOTA UNLIMITED ON USERS02;
 
 ![](G:\Oracle\oracle\test3\pict3.jpg)
 
-**第4步，使用SongDaiyu账号创建本实验的表，表创建在上述3个分区，自定义分区策略。**
+**第4步，使用studenthuang账号创建本实验的表，表创建在上述3个分区，自定义分区策略。**
 
 - 在studenthuang用户下先测试即将要创建的表，若有就删除该表。
 
@@ -218,12 +218,12 @@ ALTER USER studenghuang QUOTA UNLIMITED ON USERS02;
 **第5步，使用system用户给studenthuang的账号分配上述分区的使用权限。使用system用户给你的用户分配可以查询执行计划的权限。**
 
 ```sql
-ALTER USER SongDaiyu QUOTA UNLIMITED ON USERS;
-ALTER USER SongDaiyu QUOTA UNLIMITED ON USERS02;
-ALTER USER SongDaiyu QUOTA UNLIMITED ON USERS03;
+ALTER USER studenthuang QUOTA UNLIMITED ON USERS;
+ALTER USER studenthuang QUOTA UNLIMITED ON USERS02;
+ALTER USER studenthuang QUOTA UNLIMITED ON USERS03;
 exit
 set autotrace on
-select * from SongDaiyu.orders where order_date
+select * from studenthuang.orders where order_date
 between to_date('2017-1-1','yyyy-mm-dd') and to_date('2018-6-1','yyyy-mm-dd');
 ```
 
